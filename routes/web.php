@@ -17,6 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get("/foto",function(){
+    $img = Image::make("https://thispersondoesnotexist.com/image");
+    $img->resize(128, null, function ($constraint) {
+        $constraint->aspectRatio();
+    });
+    $filePath = public_path('/fotos');
+    $img->save("$filePath/foto_reduce.png");
+});
+
+
+
+
 require __DIR__.'/auth.php';
 require __DIR__.'/front_end.php';
 require __DIR__.'/back_end.php';

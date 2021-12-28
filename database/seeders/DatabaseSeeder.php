@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(EspecialidadSeeder::class);
-        Doctor::factory(20)->create();
-        Paciente::factory(100)->create();
-        Cita::factory(500)->create();
+        Doctor::factory(100)->create();
+        Paciente::factory(500)->create();
+        Cita::factory(2500)->create();
     }
 }

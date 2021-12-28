@@ -23,6 +23,7 @@ class EspecialidadFactory extends Factory
     {
         return [
             "f_alta" => $this->faker->dateTimeBetween('-10 years', 'now'),
+            "activa" => random_int(1,5)==5?false:true,
         ];
     }
 }
