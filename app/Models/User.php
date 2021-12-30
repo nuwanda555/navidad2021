@@ -40,4 +40,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //es muy importante poner esta linea, para que cuando accedamos a la tabla de users nos muestre los datos de pacientes o doctores
+    protected $with = ['perfil'];
+
+    public function perfil()
+    {
+        return $this->morphTo();
+    }
+
+    public function getEsDoctorAttribute()
+    {
+        return $this->perfil_type == 'App\Models\Doctor';
+    }
+    public function getEsPacienteAttribute()
+    {
+        return $this->perfil_type == 'App\Models\Paciente';
+    }
 }

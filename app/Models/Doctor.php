@@ -10,7 +10,7 @@ class Doctor extends Model
     use HasFactory;
     protected $table="doctores";
     protected $guarded=[];
-    
+
     public function citas()
     {
         return $this->hasMany(Cita::class);
@@ -19,6 +19,11 @@ class Doctor extends Model
     public function especialidad()
     {
         return $this->belongsTo(Especialidad::class);
+    }
+
+    public function user()
+    {
+      return $this->morphOne('App\Models\User', 'perfil');
     }
 }
 
