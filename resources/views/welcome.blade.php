@@ -93,7 +93,7 @@
                                     data: 'nombre',
                                     title: 'Nombre',
                                     render: function(data, type, row) {
-                                        return `<img class='foto_perfil' width='64px' src='/fotos/${row.foto}'><a href="{{ url('/doctores') }}/${row.id}">${data}</a>`;
+                                        return `<img class='foto_perfil' width='64px' src='/fotos/${row.foto}'>${data}`;
                                     }
                                 },
                                 {
@@ -103,7 +103,7 @@
                                 {
                                     data: 'id',
                                     render: function(data, type, row) {
-                                        return `<a href="{{ url('/doctores') }}/${data}">Cita</a>`;
+                                        return `<a href="{{ url('/calendario') }}/${data}">Pedir cita</a>`;
                                     }
                                 }
                             ]

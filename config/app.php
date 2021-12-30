@@ -2,6 +2,10 @@
 
 return [
 
+    'hora_inicio' => '08:00:00',
+    'hora_fin' => '20:00:00',
+    'duracion_cita' => 30,  #duranción en minutos de una cita
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

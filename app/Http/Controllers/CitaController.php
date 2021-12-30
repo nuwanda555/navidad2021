@@ -3,10 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cita;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CitaController extends Controller
 {
+    public function calendario($doctor_id)
+    {
+        $doctor=Doctor::find($doctor_id);
+        $citas = Cita::where('doctor_id', $doctor_id)->get();
+        return view('citas.calendario', compact('citas', 'doctor'));
+    }
+
+
+    public function confirmarCita($codigo)
+    {
+        $cita = Cita::where('codigo', $codigo)->first();
+        $cita->confirmada = Carbon::now();
+        $cita->save();
+        return redirect()->route('citas.calendario', $cita->doctor_id);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +54,9 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos=$request->all();
+
+        Cita::create($datos);
     }
 
     /**
