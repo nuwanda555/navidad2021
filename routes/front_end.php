@@ -9,7 +9,8 @@ Route::get('/send-email-confirmacion/{cita_id}', [MailController::class, 'sendEm
 Route::get('confirmar-cita/{codigo}', [CitaController::class, 'confirmarCita'])->name('confirmar-cita');
 
 Route::get('/especialidades/{especialidad_id}/doctores', [EspecialidadController::class, 'doctores'])->name('especialidades.doctores');
-Route::get('/especialidades/grafica', [EspecialidadController::class, 'grafica'])->name('especialidades.grafica');
+
+Route::get('/especialidades/grafica', [EspecialidadController::class, 'grafica'])->name('especialidades.grafica')->middleware('doctor');
 
 Route::get('/calendario/{doctor_id}', [CitaController::class, 'calendario'])->name('citas.calendario');
 Route::resource('/citas', CitaController::class);

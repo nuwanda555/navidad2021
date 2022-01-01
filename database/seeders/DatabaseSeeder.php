@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(EspecialidadSeeder::class);
+        $this->call(PoblacionSeeder::class);
+
         for ($i = 0; $i < 100; $i++) {
             $doctor = Doctor::factory()->create(); //se crea un doctor con datos al azar
             $user = User::factory()->create(['name' => $doctor->nombre, 'email' => $doctor->email]); //se crea un usuario con los datos del doctor. La contraseña es la misma para todos: password

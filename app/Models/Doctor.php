@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
-    protected $table="doctores";
-    protected $guarded=[];
+    protected $table = "doctores";
+    protected $guarded = [];
+
+    
 
     public function citas()
     {
@@ -23,7 +25,11 @@ class Doctor extends Model
 
     public function user()
     {
-      return $this->morphOne('App\Models\User', 'perfil');
+        return $this->morphOne('App\Models\User', 'perfil');
+    }
+
+    public function poblacion()
+    {
+        return $this->belongsTo(Poblacion::class);
     }
 }
-
